@@ -1,0 +1,149 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %} 
+  <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_6.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
+            <h1 class="mb-0 bread">Payment</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-10 ftco-animate">
+						<form action="payment" class="billing-form" method="POST">
+							{% csrf_token %}
+							<center><u><h3 class="mb-4 billing-heading">Billing Details</h3></u></center><br><br>
+							<button id="autofill-button" class="btn btn-primary">Autofill Payment Details</button><br><br>
+
+	          	<div class="row align-items-end">
+	          		<div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="firstname">Account Number</label>
+	                  <input type="text" class="form-control" placeholder="Enter Your Account Number" name="acn">
+	                </div>
+	              </div>
+	              <div class="col-md-6">
+	                <div class="form-group">
+	                	<label for="lastname">Name</label>
+	                  <input type="text" class="form-control" placeholder="Enter Your Name" name="name">
+	                </div>
+		            </div>
+					<!-- <div class="col-md-6">
+						<div class="form-group">
+							<label for="expiry-month">Expiry Month</label>
+							<select class="form-control" name="expiry-month" id="expiry-month">
+								<option value="">Select Month</option>
+								<option value="01">January</option>
+								<option value="02">February</option>
+								<option value="03">March</option>
+								<option value="04">April</option>
+								<option value="05">May</option>
+								<option value="06">June</option>
+								<option value="07">July</option>
+								<option value="08">August</option>
+								<option value="09">September</option>
+								<option value="10">October</option>
+								<option value="11">November</option>
+								<option value="12">December</option>
+							</select>
+						</div>
+					</div> -->
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="cvv">Expiry Month</label>
+							<input type="text" class="form-control" placeholder="Enter Your Expiry Month" name="em" id="em">
+						</div>
+					</div>
+					
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="expiry-year">Expiry Year</label>
+							<input type="text" class="form-control" placeholder="Enter Expiry Year" name="ey" id="ey">
+						</div>
+					</div>
+					
+					
+					
+		          
+		          
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="cvv">CVV</label>
+							<input type="text" class="form-control" placeholder="Enter CVV" name="cvv" id="cvv">
+						</div>
+					</div>
+					
+               
+	          </form><!-- END -->
+
+
+
+	          <!-- <div class="row mt-5 pt-3 d-flex">
+	          	<div class="col-md-6 d-flex">
+	          		<div class="cart-detail cart-total bg-light p-3 p-md-4">
+	          			<h3 class="billing-heading mb-4">Cart Total</h3>
+	          			<p class="d-flex">
+		    						<span>Subtotal</span>
+		    						<span>$20.60</span>
+		    					</p>
+		    					<p class="d-flex">
+		    						<span>Delivery</span>
+		    						<span>$0.00</span>
+		    					</p>
+		    					<p class="d-flex">
+		    						<span>Discount</span>
+		    						<span>$3.00</span>
+		    					</p>
+		    					<hr>
+		    					<p class="d-flex total-price">
+		    						<span>Total</span>
+		    						<span>$17.60</span>
+		    					</p>
+								</div>
+	          	</div> -->
+	          	<div class="col-md-6">
+	          		<div class="cart-detail bg-light p-3 p-md-4">
+	          			<h3 class="billing-heading mb-4">Payment Method</h3>
+																
+						  <p><button type="submit" class="btn btn-primary">Confirm your Payment</button></p>
+						</form>
+	          	</div>
+	          </div>
+          </div> <!-- .col-md-8 -->
+        </div>
+      </div>
+    </section> <!-- .section -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const autofillButton = document.getElementById("autofill-button");
+		
+			autofillButton.addEventListener("click", function () {
+				// Replace these values with the user's existing payment details
+				const paymentDetails = {
+					acn: "1234 5678 9012 3456",
+					name: "BINCY SATHEESH",
+					em: "12",
+					ey: "25",
+					cvv: "123",
+				};
+		
+				// Autofill the form fields
+				document.querySelector("input[name='acn']").value = paymentDetails.acn;
+				document.querySelector("input[name='name']").value = paymentDetails.name;
+				document.querySelector("input[name='em']").value = paymentDetails.em;
+				document.querySelector("input[name='ey']").value = paymentDetails.ey;
+				document.querySelector("input[name='cvv']").value = paymentDetails.cvv;
+			});
+		});
+		</script>
+		
+		
+{% endblock %}
